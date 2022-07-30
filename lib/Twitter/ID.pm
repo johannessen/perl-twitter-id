@@ -154,7 +154,8 @@ S<Twitter ID> or a hash reference with the ID components
 
 =head2 sequence
 
- $sequence = $tid->sequence; $tid->sequence( $sequence );
+ $sequence = $tid->sequence;
+ $tid->sequence( $sequence );
 
 Reads or writes the ID's sequence number component. The sequence
 number is a positive integer ranging from 0 to 4095.
@@ -176,7 +177,8 @@ this method returns an undefined value.
 
 =head2 worker
 
- $worker = $tid->worker; $tid->worker( $worker );
+ $worker = $tid->worker;
+ $tid->worker( $worker );
 
 Reads or writes the ID's worker ident component. The worker ident
 is a positive integer ranging from 0 to 1023. Its five most
