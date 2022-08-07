@@ -46,7 +46,7 @@ sub _set {
 	
 	croak "Twitter timestamps before $TW_EPOCH unsupported" if $timestamp < $TW_EPOCH;
 	croak "Twitter ID components must be positive" if $worker < 0 || $sequence < 0;
-	croak "Worker ID $worker too large (max $MAX_WORKER)" if $worker >= $MAX_WORKER;
+	croak "Worker ident $worker too large (max $MAX_WORKER)" if $worker >= $MAX_WORKER;
 	croak "Sequence number $sequence too large (max $MAX_SEQUENCE)" if $sequence >= $MAX_SEQUENCE;
 	
 	$$self = ($timestamp - $TW_EPOCH) << $TIMESTAMP_SHIFT
@@ -117,9 +117,8 @@ __END__
  # https://twitter.com/Twitter/status/1445078208190291973
  my $tid = Twitter::ID->new( 1445078208190291973 );
  
- use Time::Piece;
- say Time::Piece->new( $tid->epoch );
- # Mon Oct  4 19:27:47 2021
+ say scalar gmtime $tid->epoch;
+ # Mon Oct  4 17:27:47 2021
 
 =head1 DESCRIPTION
 
@@ -133,8 +132,9 @@ Twitter ID. Does not use the Twitter API.
  $posix_seconds = $tid->epoch;
 
 Convenience method to retrieve the seconds since the POSIX epoch.
-Suitable to be directly passed on to S<e. g.> L<Time::Piece> or
-L<DateTime> for further processing.
+Suitable to be directly passed on to S<e. g.>
+L<gmtime|perlfunc/"gmtime">, L<Time::Piece>, or L<DateTime>
+for further processing.
 
 For Twitter IDs from before the introduction of "Snowflake" IDs,
 this method currently returns an undefined value.
@@ -150,7 +150,7 @@ this method currently returns an undefined value.
 
 Creates a new Twitter ID object. Accepts either the scalar
 S<Twitter ID> or a hash reference with the ID components
-(millisecond POSIX timestamp, worker ID, sequence number).
+(millisecond POSIX timestamp, worker ident, sequence number).
 
 =head2 sequence
 
@@ -169,9 +169,7 @@ this method returns an undefined value.
  $tid->timestamp( $posix_milliseconds );
 
 Reads or writes the ID's timestamp component. The timestamp is in
-milliseconds since the POSIX epoch. Timestamps from before the
-introduction of "Snowflake" IDs in late 2010 are unsupported.
-
+milliseconds since the POSIX epoch.
 For Twitter IDs from before the introduction of "Snowflake" IDs,
 this method returns an undefined value.
 
@@ -198,8 +196,8 @@ of such IDs may be estimated with the (unrelated) web service
 L<TweetedAt|https://oduwsdl.github.io/tweetedat/>. I myself have no
 need to parse Twitter IDs from 2010 or earlier and likely won't be
 able to justify spending time on adding such a feature to this
-module, but I'd be happy to accept patches or grant co-maintainer
-status.
+module, but if you'd like to contribute, I'd be happy to accept
+patches or grant co-maintainer status.
 
 =head1 SEE ALSO
 

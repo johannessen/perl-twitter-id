@@ -24,7 +24,8 @@ repository and install it, run the following steps.
 1. `dzil build`
 1. `cpanm <archive>.tar.gz`
 
-Generally, you do not need Dist::Zilla to contribute patches.
+This is a “Pure Perl” module, so you generally do not need
+Dist::Zilla to contribute patches.
 You can simply clone the repository and run the test suite
 using `prove` instead.
 
