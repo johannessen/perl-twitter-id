@@ -197,7 +197,7 @@ L<TweetedAt|https://oduwsdl.github.io/tweetedat/>. I myself have no
 need to parse Twitter IDs from 2010 or earlier and likely won't be
 able to justify spending time on adding such a feature to this
 module, but if you'd like to contribute, I'd be happy to accept
-patches or grant co-maintainer status.
+your request for transfer of primary permissions for PAUSE/CPAN.
 
 =head1 SEE ALSO
 

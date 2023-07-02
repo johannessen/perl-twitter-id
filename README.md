@@ -4,7 +4,12 @@ Twitter::ID
 This Perl module allows reading the date from a "Snowflake" Twitter ID.
 
 Twitter IDs from before the introduction of Snowflake in late 2010 are
-currently unsupported. If you'd like to contribute, please open a new issue.
+currently unsupported.
+
+Since Twitter has decided to disallow anonymous access on 30 June 2023,
+I have no further use for this module and development has ceased.
+If you'd like to take over, I'd be happy to accept your request for
+transfer of [PAUSE](https://pause.perl.org/) primary permission.
 
 
 Installation
